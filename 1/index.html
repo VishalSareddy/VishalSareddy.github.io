@@ -1,1 +1,150 @@
-aaa
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project 1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff; /* light blue background */
+      color: #003366; /* dark blue text */
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #004c99;
+      text-shadow: 1px 1px 2px #cce6ff;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin: 20px 0 15px;
+      color: #004c99;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #003366;
+    }
+
+    .section {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      width: 85%;
+      max-width: 1100px;
+    }
+
+    .image-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .image-row img {
+      width: 30%; /* 3 images fit side by side */
+      border-radius: 12px;
+      box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+    }
+
+    a.back-button {
+      text-decoration: none;
+      background-color: #66b2ff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      margin: 20px 0;
+      display: inline-block;
+    }
+
+    a.back-button:hover {
+      background-color: #3399ff;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <h1>Project 1</h1>
+
+  <!-- Overview Section -->
+  <div class="section">
+    <h2>Overview</h2>
+    <p>
+      <!-- Replace with your paragraph -->
+      This is the overview paragraph for Project 1. Describe your project goals, approach, and key insights here.
+    </p>
+  </div>
+
+  <!-- Part 1 Section -->
+  <div class="section">
+    <h2>Part 1</h2>
+    <p>
+      <!-- Replace with your paragraph -->
+      This is the description for Part 1. Explain your method and results here.
+    </p>
+    <div class="image-row">
+      <img src="images/part1_img1.jpg" alt="Part 1 Image 1">
+      <img src="images/part1_img2.jpg" alt="Part 1 Image 2">
+      <img src="images/part1_img3.jpg" alt="Part 1 Image 3">
+    </div>
+  </div>
+
+  <!-- Part 2 Section -->
+  <div class="section">
+    <h2>Part 2</h2>
+    <p>
+      <!-- Replace with your paragraph -->
+      This is the description for Part 2. Summarize the experiment and findings here.
+    </p>
+    <div class="image-grid">
+      <img src="images/part2_img1.jpg" alt="Part 2 Image 1">
+      <img src="images/part2_img2.jpg" alt="Part 2 Image 2">
+      <img src="images/part2_img3.jpg" alt="Part 2 Image 3">
+      <img src="images/part2_img4.jpg" alt="Part 2 Image 4">
+      <img src="images/part2_img5.jpg" alt="Part 2 Image 5">
+      <img src="images/part2_img6.jpg" alt="Part 2 Image 6">
+      <img src="images/part2_img7.jpg" alt="Part 2 Image 7">
+      <img src="images/part2_img8.jpg" alt="Part 2 Image 8">
+      <img src="images/part2_img9.jpg" alt="Part 2 Image 9">
+      <img src="images/part2_img10.jpg" alt="Part 2 Image 10">
+      <img src="images/part2_img11.jpg" alt="Part 2 Image 11">
+      <img src="images/part2_img12.jpg" alt="Part 2 Image 12">
+      <img src="images/part2_img13.jpg" alt="Part 2 Image 13">
+      <img src="images/part2_img14.jpg" alt="Part 2 Image 14">
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <a href="index.html" class="back-button">Back to Home</a>
+</body>
+</html>
