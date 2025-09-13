@@ -172,7 +172,27 @@
     <h2>Part 2: Multi-Scale Image Pyramid</h2>
     <p>
       <!-- Replace with your paragraph -->
-      This is the description for Part 2. Summarize the experiment and findings here.
+      	The purpose of this section was to implement a multi-scale image pyramid alignment algorithm for aligning the bigger .TIF files. This was needed 
+        because the .TIF files were of a much higher resolution, which would require larger displacement windows, making single-scale exhaustive search to 
+        be far more expensive and time consuming (testing single-scale on a sample .TIF file was running for over 3-4 minutes before I had to quit running 
+        the algorithm). For this reason, I implemented an image pyramid, which represents the image at multiple scales (or levels) and then sequentially 
+        processes the image from the coarsest image (smallest scale) up until the finest image (largest scale or the whole image). Throughout this process, 
+        the estimated optimal displacement value for image alignment is gradually adjusted at each level, enabling a much faster search and quicker alignment 
+        for larger resolution images. </br></br>
+        I used my single-scale alignment function in order to implement this image pyramid, considering that it serves as a useful base case (level=0) for a 
+        recursive function that represents the image pyramid algorithm. For this, I kept many of the same hyperparameters, including the 30% border cropping 
+        and the same NCC scoring mechanic (displacement window is the exception here). When recursing from a higher to lower level, my image pyramid generated 
+        a proper downsampled image by using the cv.resize tool, which implemented lowpass Gaussian pre-filtering and then subsampling (rescaling the image by 0.5 
+        or ½ for each level decrease). This downsampled image was then passed into the recursive call to the lower level, epitomizing the processing of a coarser 
+        image. After the displacements of a lower level are calculated, they are then transferred to the upper level (finer image) and rescaled (multiplied by 2) 
+        and fine tuned by shifting the upper level image and passing it into the single-scale alignment function with a small displacement window for refinement 
+        (in my case, I used [-2, 2]). This generated the updated displacements all the way up to the finest image, which then provided the necessary optimal 
+        displacements to align the images. </br></br>
+        Perhaps the biggest thing worth noting was that the necessary displacement window was a lot higher, changing from [-15, 15] with the .JPG files in 
+        single-scale alignment up to [-50, 50] for the higher resolution .TIF files. This made it such that the optimal level parameter for the .JPG files was 
+        much smaller (I used level=1) than for the .TIF files (level=1 makes the algorithm too slow and level=3 was much better and what I used). Furthermore, 
+        the emir.tif alignment was incredibly off with my algorithm, a fact that I believe is due to the distorted brightness values for each channel. This 
+        makes NCC a quite bad scoring mechanism for the emir.tif file. Otherwise, please enjoy the images below!
     </p>
     <div class="image-grid">
       <figure>
