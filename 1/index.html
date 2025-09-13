@@ -113,11 +113,12 @@
     <p>
       <!-- Replace with your paragraph -->
       The purpose of this section is to implement an exhaustive window search algorithm using a range of displacements in order to align the 3-channel images. 
-      For my displacement range, I chose [-15, 15] as that was the window provided as an example in the spec and it seemed to work for the relevant images. </br>
+      For my displacement range, I chose [-15, 15] as that was the window provided as an example in the spec and it seemed to work for the relevant 
+      images. </br> </br>
       I tried both L2 norm (Euclidean distance) and Normalized Cross-Correlation (NCC) as metrics to score/measure how well any two channels are aligned for a 
       given image. For L2, I aimed to minimize the value (intuitive to the distance-based nature of the metric), whereas for NCC, I aimed to maximize the value 
       (correlation closer to 1 indicates greater pixel matching). After trying both metrics, NCC seemed to work better so I kept that metric for scoring how well 
-      my images aligned and determining the proper x-axis and y-axis displacements to best align each channel of each image. </br>
+      my images aligned and determining the proper x-axis and y-axis displacements to best align each channel of each image. </br> </br>
       It is worth noting, though, that my initial single-scale alignment function, looping over each displacement window combination (using np.roll) and 
       scoring the alignment using NCC, was not quite accurate. This was a result of the messy edges around each channel, which messed up the reliability of the 
       NCC scoring metric by adding unnecessary weight to parts of the image that are not relevant. To mitigate this, I implemented a border cropping mechanism 
