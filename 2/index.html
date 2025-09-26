@@ -1,1 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project 2</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff; /* light blue background */
+      color: #003366; /* dark blue text */
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #004c99;
+      text-shadow: 1px 1px 2px #cce6ff;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin: 20px 0 15px;
+      color: #004c99;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #003366;
+    }
+
+    .section {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      width: 85%;
+      max-width: 1100px;
+    }
+
+    /* Part 1 image row */
+    .image-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .image-row figure {
+      width: 40%;
+      text-align: center;
+    }
+
+    .image-row img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .image-row figcaption {
+      font-size: 0.95rem;
+      margin-top: 10px;
+      color: #004c99;
+      text-align: center;
+    }
+
+    /* Part 2 image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 15px;
+    }
+
+    .image-grid figure {
+      text-align: center;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .image-grid figcaption {
+      font-size: 0.9rem;
+      margin-top: 10px;
+      color: #004c99;
+      text-align: center;
+    }
+    
+    a.back-button {
+      text-decoration: none;
+      background-color: #66b2ff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      margin: 20px 0;
+      display: inline-block;
+    }
+
+    a.back-button:hover {
+      background-color: #3399ff;
+      transform: translateY(-2px);
+    }
+
+    pre {
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Project 2</h1>
+
+  <!-- Overview Section -->
+  <div class="section">
+    <h2>Project 2 Overview</h2>
+    <p>
+      <!-- Replace with your paragraph -->
+      This project is intended to play with filters and frequencies, generating various image types including edge detectors, hybrid images with varying 
+      frequencies, sharpening filters, Gaussian/Laplacian stacks, and multiresolution image blends. Hope you enjoy!
+    </p>
+    <pre><code class="language-python">
+      # Factorial function
+      def factorial(n):
+          if n == 0 or n == 1:
+              return 1
+          else:
+              return n * factorial(n - 1)
+    
+      print(factorial(5))  # Output: 120
+    </code></pre>
+  </div>
+
+  <!-- Part 2 Section -->
+  <div class="section">
+    <h2>Part 1.1: Multi-Scale Image Pyramid</h2>
+    <p>
+      <!-- Replace with your paragraph -->
+      	
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="cathedralB.jpg" alt="Part 2 Image 1">
+        <figcaption>Cathedral; Blue-Green Offsets [5, 2]; Blue-Red Offsets [12, 3]</figcaption>
+      </figure>
+      <figure>
+        <img src="monasteryB.jpg" alt="Part 2 Image 2">
+        <figcaption>Monastery; Blue-Green Offsets [-3, 2]; Blue-Red Offsets [3, 2]</figcaption>
+      </figure>
+      <figure>
+        <img src="tobolskB.jpg" alt="Part 2 Image 3">
+        <figcaption>Tobolsk; Blue-Green Offsets [3, 3]; Blue-Red Offsets [7, 3]</figcaption>
+      </figure>
+      <figure>
+        <img src="church.jpg" alt="Part 2 Image 4">
+        <figcaption>Church; Blue-Green Offsets [25, 4]; Blue-Red Offsets [58, -4]</figcaption>
+      </figure>
+      <figure>
+        <img src="emir.jpg" alt="Part 2 Image 5">
+        <figcaption>Emir; Blue-Green Offsets [48, 24]; Blue-Red Offsets [-214, 4]</figcaption>
+      </figure>
+      <figure>
+        <img src="harvesters.jpg" alt="Part 2 Image 6">
+        <figcaption>Harvesters; Blue-Green Offsets [59, 17]; Blue-Red Offsets [123, 15]</figcaption>
+      </figure>
+      <figure>
+        <img src="icon.jpg" alt="Part 2 Image 7">
+        <figcaption>Icon; Blue-Green Offsets [41, 17]; Blue-Red Offsets [90, 23]</figcaption>
+      </figure>
+      <figure>
+        <img src="italil.jpg" alt="Part 2 Image 8">
+        <figcaption>Italil; Blue-Green Offsets [38, 21]; Blue-Red Offsets [76, 36]</figcaption>
+      </figure>
+      <figure>
+        <img src="lastochikino.jpg" alt="Part 2 Image 9">
+        <figcaption>Lastochikino; Blue-Green Offsets [-3, -2]; Blue-Red Offsets [75, -8]</figcaption>
+      </figure>
+      <figure>
+        <img src="lugano.jpg" alt="Part 2 Image 10">
+        <figcaption>Lugano; Blue-Green Offsets [40, -16]; Blue-Red Offsets [92, -28]</figcaption>
+      </figure>
+      <figure>
+        <img src="melons.jpg" alt="Part 2 Image 11">
+        <figcaption>Melons; Blue-Green Offsets [82, 10]; Blue-Red Offsets [178, 13]</figcaption>
+      </figure>
+      <figure>
+        <img src="self_portrait.jpg" alt="Part 2 Image 12">
+        <figcaption>Self_Portrait; Blue-Green Offsets [78, 29]; Blue-Red Offsets [175, 37]</figcaption>
+      </figure>
+      <figure>
+        <img src="siren.jpg" alt="Part 2 Image 13">
+        <figcaption>Siren; Blue-Green Offsets [49, -5]; Blue-Red Offsets [96, -24]</figcaption>
+      </figure>
+      <figure>
+        <img src="three_generations.jpg" alt="Part 2 Image 14">
+        <figcaption>Three_Generations; Blue-Green Offsets [50, 15]; Blue-Red Offsets [110, 13]</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- Example Section -->
+  <div class="section">
+    <h2>Part 3: Other Examples</h2>
+    <p>
+      <!-- Replace with your paragraph -->
+      These are some extra images from the Prokudin-Gorskii collection! I used the same displacement window [-50, 50] and pyramid depth (level) 3 as that of Part 2
+      multi-scale image pyramid.
+    </p>
+    <div class="image-grid">
+        <figure>
+          <img src="mosque.jpg" alt="Part 3 Image 1">
+          <figcaption>Mosque; Blue-Green Offsets [32, 6]; Blue-Red Offsets [79, 8]</figcaption>
+        </figure>
+        <figure>
+          <img src="rock.jpg" alt="Part 3 Image 2">
+          <figcaption>Rock; Blue-Green Offsets [38, 34]; Blue-Red Offsets [94, 59]</figcaption>
+        </figure>
+        <figure>
+          <img src="suna.jpg" alt="Part 3 Image 3">
+          <figcaption>Suna; Blue-Green Offsets [25, -5]; Blue-Red Offsets [102, -10]</figcaption>
+        </figure>
+      </div>
+    </div>
+
+  <!-- Back Button -->
+  <a href="../index.html" class="back-button">Back to Home</a>
+</body>
+</html>
