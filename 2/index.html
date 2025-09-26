@@ -421,6 +421,68 @@
     </div>
   </div>
 
+  <div class="section">
+    <h2>Part 2.3: Gaussian and Laplacian Stacks</h2>
+    <p>Please find the images of the Laplacian stack and originals in line with the Figure 3.42 of the Szelski paper below. The rows are Laplacian depth 0, 
+    Laplacian depth 2, Laplacian depth 4 (essentially the Gaussian blur from Gaussian stack since depth of the stack is 4, and the originals respectively. The 
+    columns are apple, orange, and hybrid oraple respectively.
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="figureA.jpg" alt="Part 3 Image 1">
+        <figcaption>(a)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureB.jpg" alt="Part 3 Image 1">
+        <figcaption>(b)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureC.jpg" alt="Part 3 Image 1">
+        <figcaption>(c)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureD.jpg" alt="Part 3 Image 1">
+        <figcaption>(d)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureE.jpg" alt="Part 3 Image 1">
+        <figcaption>(e)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureF.jpg" alt="Part 3 Image 1">
+        <figcaption>(f)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureG.jpg" alt="Part 3 Image 1">
+        <figcaption>(g)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureH.jpg" alt="Part 3 Image 1">
+        <figcaption>(h)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureI.jpg" alt="Part 3 Image 1">
+        <figcaption>(i)</figcaption>
+      </figure>
+      <figure>
+        <img src="apple.jpg" alt="Part 3 Image 1">
+        <figcaption>(j)</figcaption>
+      </figure>
+      <figure>
+        <img src="orange.jpg" alt="Part 3 Image 1">
+        <figcaption>(k)</figcaption>
+      </figure>
+      <figure>
+        <img src="oraple.jpg" alt="Part 3 Image 1">
+        <figcaption>(l)</figcaption>
+      </figure>
+    </div>
+    <p>
+      In order to blend the images, I used a left-right linear mask represented as a Gaussian stack. The mask blended together the images at the seam in the center
+      using np.linspace() which enabled a smooth transition for blending rather than a visible seam.
+    </p>
+  </div>
+
   <!-- Example Section -->
   <div class="section">
     <h2>Part 3: Other Examples</h2>
