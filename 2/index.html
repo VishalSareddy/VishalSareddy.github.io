@@ -298,6 +298,42 @@
     </p>
   </div>
 
+  <div class="section">
+    <h2>Part 2.1: Image Sharpening</h2>
+    <p>
+      The unsharp mask filter essentially adds more of the higher frequencies to the original image to “sharpen” the original image. The process for calculating 
+      these frequencies is done by initially blurring the original image by a Gaussian low-pass filter but consolidates the lower frequencies of the image in 
+      a “blur” effect and then subtracting the original image by the blurred image in order to result only the high-frequency pixels of the image. This 
+      high-frequency image is then multiplied by a hyperparameter ⍺, where bigger values of ⍺ would enable greater “sharpening” of the original image. This 
+      resultant image is then added to the original image in order to create the sharpened image. This whole process can be represented as f + ⍺(f - f * g) 
+      where f is the original image, g is the Gaussian kernel, and * represents convolution. This expression can be changed as f + ⍺(f - f * g) = 
+      (1 + ⍺)f - ⍺(f * g) = f * ((1 + ⍺)e - ⍺g). The last expression represents convolving the original image by the unsharp mask filter or (1 + ⍺)e - ⍺g, where 
+      e is the unit impulse. This convolution allows our images to be sharpened as seen below.
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="taj.jpg" alt="Part 2 Image 1">
+        <figcaption>Blurred Taj Mahal</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_sharp_taj.jpg" alt="Part 2 Image 2">
+        <figcaption>Sharpened Taj Mahal</figcaption>
+      </figure>
+      <figure>
+        <img src="original_cat.jpeg" alt="Part 2 Image 3">
+        <figcaption>Original Cat</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_blur_cat.jpeg" alt="Part 2 Image 4">
+        <figcaption>Blurred Cat</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_sharp_cat.jpeg" alt="Part 2 Image 5">
+        <figcaption>Re-Sharpened Cat</figcaption>
+      </figure>
+    </div>
+  </div>
+
   <!-- Example Section -->
   <div class="section">
     <h2>Part 3: Other Examples</h2>
