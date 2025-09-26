@@ -135,25 +135,92 @@
       This project is intended to play with filters and frequencies, generating various image types including edge detectors, hybrid images with varying 
       frequencies, sharpening filters, Gaussian/Laplacian stacks, and multiresolution image blends. Hope you enjoy!
     </p>
-    <pre><code class="language-python">
-      # Factorial function
-      def factorial(n):
-          if n == 0 or n == 1:
-              return 1
-          else:
-              return n * factorial(n - 1)
-    
-      print(factorial(5))  # Output: 120
-    </code></pre>
   </div>
 
   <!-- Part 2 Section -->
   <div class="section">
-    <h2>Part 1.1: Multi-Scale Image Pyramid</h2>
+    <h2>Part 1.1: Convolutions From Scratch!</h2>
     <p>
       <!-- Replace with your paragraph -->
-      	
+      Please find the code for convolution with 4 for loops, convolution with 2 for loops, and the runtime for those two functions as well as the scipy convolve2d 
+      function.	
+      <pre><code class="language-python">
+      # Four for loops
+      def conv4(image, kernel):
+          H, W = image.shape
+          kH, kW = kernel.shape
+          pad_h, pad_w = kH // 2, kW // 2
+          
+          image = np.pad(image, (pad_h, pad_w))
+          out = np.zeros((H, W))
+      
+          for i in range(H):
+              for j in range(W):
+                  for m in range(kH):
+                      for n in range(kW):
+                          out[i, j] += kernel[m, n] * image[i + m, j + n]
+          return out
+      
+      # Two for loops
+      def conv2(image, kernel):
+          H, W = image.shape
+          kH, kW = kernel.shape
+          pad_h, pad_w = kH // 2, kW // 2
+          
+          image = np.pad(image, (pad_h, pad_w))
+          out = np.zeros((H, W))
+      
+          for i in range(H):
+              for j in range(W):
+                  filter = image[i:i+kH, j:j+kW]
+                  out[i, j] = np.sum(filter * kernel)
+          return out
+
+        # Four for loop runtime: 0.1573 seconds
+        # Two for loop runtime: 0.0492 seconds
+        # Convolve2D runtime: 0.0010 seconds
+      </code></pre>
+      For runtime the 4 for loop (referred to as 4F) implementation is the slowest, followed by the 2 for loop (referred to as 2F) implementation, followed by the 
+      built-in scipy convolve2d (referred to as Conv2D) function. 2F is faster than 4F because it utilized numpy vectorization for the kernel, which optimizes 
+      the function for larger kernels and gets rid of the two inner for loops in 4F.  Conv2D is faster than 2F because for larger kernel sizes, it performs 
+      convolution in the frequency domain. This is because convolution in the time domain is practically equivalent to multiplication in the frequency domain, 
+      making FFT-based convolution much faster. This enables Conv2D to be significantly faster for large kernel sizes than 2F. <br><br>
+
+      We use padding to handle boundaries in the same manner for all three convolution implementations. This padding applies (kernel dimension / 2) layers of 
+      zeros around the image. This causes the kernel to “see” less neighbors for the edge pixels, weighting the result for those pixels towards lower-value, 
+      darker pixels. <br><br>
+
+      Please find all the relevant images for this part below.
     </p>
+
+    <div class="image-grid">
+      <figure>
+        <img src="cathedralB.jpg" alt="Part 2 Image 1">
+        <figcaption>Cathedral; Blue-Green Offsets [5, 2]; Blue-Red Offsets [12, 3]</figcaption>
+      </figure>
+      <figure>
+        <img src="monasteryB.jpg" alt="Part 2 Image 2">
+        <figcaption>Monastery; Blue-Green Offsets [-3, 2]; Blue-Red Offsets [3, 2]</figcaption>
+      </figure>
+      <figure>
+        <img src="tobolskB.jpg" alt="Part 2 Image 3">
+        <figcaption>Tobolsk; Blue-Green Offsets [3, 3]; Blue-Red Offsets [7, 3]</figcaption>
+      </figure>
+      <figure>
+        <img src="church.jpg" alt="Part 2 Image 4">
+        <figcaption>Church; Blue-Green Offsets [25, 4]; Blue-Red Offsets [58, -4]</figcaption>
+      </figure>
+      <figure>
+        <img src="emir.jpg" alt="Part 2 Image 5">
+        <figcaption>Emir; Blue-Green Offsets [48, 24]; Blue-Red Offsets [-214, 4]</figcaption>
+      </figure>
+      <figure>
+        <img src="harvesters.jpg" alt="Part 2 Image 6">
+        <figcaption>Harvesters; Blue-Green Offsets [59, 17]; Blue-Red Offsets [123, 15]</figcaption>
+      </figure>
+    </div>
+
+    <!---
     <div class="image-grid">
       <figure>
         <img src="cathedralB.jpg" alt="Part 2 Image 1">
@@ -212,6 +279,7 @@
         <figcaption>Three_Generations; Blue-Green Offsets [50, 15]; Blue-Red Offsets [110, 13]</figcaption>
       </figure>
     </div>
+    -->
   </div>
 
   <!-- Example Section -->
