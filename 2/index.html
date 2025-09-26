@@ -424,7 +424,7 @@
   <div class="section">
     <h2>Part 2.3: Gaussian and Laplacian Stacks</h2>
     <p>Please find the images of the Laplacian stack and originals in line with the Figure 3.42 of the Szelski paper below. The rows are Laplacian depth 0, 
-    Laplacian depth 2, Laplacian depth 4 (essentially the Gaussian blur from Gaussian stack since depth of the stack is 4, and the originals respectively. The 
+    Laplacian depth 2, Laplacian depth 4 (essentially the Gaussian blur from Gaussian stack since depth of the stack is 5), and the originals respectively. The 
     columns are apple, orange, and hybrid oraple respectively.
     </p>
     <div class="image-grid">
@@ -483,29 +483,57 @@
     </p>
   </div>
 
-  <!-- Example Section -->
   <div class="section">
-    <h2>Part 3: Other Examples</h2>
+    <h2>Part 2.4: Multi-Resolution Blending</h2>
     <p>
-      <!-- Replace with your paragraph -->
-      These are some extra images from the Prokudin-Gorskii collection! I used the same displacement window [-50, 50] and pyramid depth (level) 3 as that of Part 2
-      multi-scale image pyramid.
+      Please find below a clearer oraple for this part specifically with a lower depth Laplacian stack (depth=3). The oraple at depth=5 is a bit blurry due to
+      the compounding value of sigma heightening Gaussian blur.
     </p>
     <div class="image-grid">
-        <figure>
-          <img src="mosque.jpg" alt="Part 3 Image 1">
-          <figcaption>Mosque; Blue-Green Offsets [32, 6]; Blue-Red Offsets [79, 8]</figcaption>
-        </figure>
-        <figure>
-          <img src="rock.jpg" alt="Part 3 Image 2">
-          <figcaption>Rock; Blue-Green Offsets [38, 34]; Blue-Red Offsets [94, 59]</figcaption>
-        </figure>
-        <figure>
-          <img src="suna.jpg" alt="Part 3 Image 3">
-          <figcaption>Suna; Blue-Green Offsets [25, -5]; Blue-Red Offsets [102, -10]</figcaption>
-        </figure>
-      </div>
+      <figure>
+        <img src="apple.jpeg" alt="Part 3 Image 1">
+        <figcaption>Original Apple</figcaption>
+      </figure>
+      <figure>
+        <img src="orange.jpeg" alt="Part 3 Image 1">
+        <figcaption>Original Orange</figcaption>
+      </figure>
+      <figure>
+        <img src="oraple_clear.jpeg" alt="Part 3 Image 1">
+        <figcaption>Oraple</figcaption>
+      </figure>
     </div>
+    <p>
+      Finally, please find below the two blended images I created. For the eye-sand blend, I utilized a circular mask, functionally similar to the linear
+      mask but instead having the seam be a circle with a pre-determined radius hyperparameter.
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="alex.jpg" alt="Part 3 Image 1">
+        <figcaption>Original Alex</figcaption>
+      </figure>
+      <figure>
+        <img src="amy.jpg" alt="Part 3 Image 1">
+        <figcaption>Original Amy</figcaption>
+      </figure>
+      <figure>
+        <img src="alex_amy.jpg" alt="Part 3 Image 1">
+        <figcaption>Alex Amy Blend</figcaption>
+      </figure>
+      <figure>
+        <img src="eye.jpg" alt="Part 3 Image 1">
+        <figcaption>Original Eye</figcaption>
+      </figure>
+      <figure>
+        <img src="sand.jpg" alt="Part 3 Image 1">
+        <figcaption>Original Sand</figcaption>
+      </figure>
+      <figure>
+        <img src="eye_sand.jpg" alt="Part 3 Image 1">
+        <figcaption>Eye in the Sand</figcaption>
+      </figure>
+    </div>
+  </div>
 
   <!-- Back Button -->
   <a href="../index.html" class="back-button">Back to Home</a>
