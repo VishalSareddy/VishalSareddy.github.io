@@ -211,7 +211,7 @@
         <figcaption>scipy convolution with Dx finite difference operator</figcaption>
       </figure>
       <figure>
-        <img src="cs180_proj2_selfie_conv_Dx.jpg" alt="Part 2 Image 5">
+        <img src="cs180_proj2_selfie_conv_Dy.jpg" alt="Part 2 Image 5">
         <figcaption>scipy convolution with Dy finite difference operator</figcaption>
       </figure>
     </div>
@@ -277,6 +277,36 @@
     </div>
     -->
   </div>
+
+  <div class="section">
+    <h2>Part 1.2: Finite Difference Operator</h2>
+    <p>
+      Please find all the images below:
+    </p>
+    <div class="image-grid">
+        <figure>
+          <img src="cs180_proj2_cameraman_conv_Dx.jpg" alt="Part 3 Image 1">
+          <figcaption>Cameraman convolved with Dx</figcaption>
+        </figure>
+        <figure>
+          <img src="cs180_proj2_cameraman_conv_Dy.jpg" alt="Part 3 Image 2">
+          <figcaption>Cameraman convolved with Dy</figcaption>
+        </figure>
+        <figure>
+          <img src="cs180_proj2_cameraman_grad.jpg" alt="Part 3 Image 3">
+          <figcaption>Cameraman gradient magnitude image</figcaption>
+        </figure>
+        <figure>
+          <img src="cs180_proj2_cameraman_binarize.jpg" alt="Part 3 Image 3">
+          <figcaption>Binarized gradient magnitude image with 25% threshold</figcaption>
+        </figure>
+      </div>
+    <p>
+      For the threshold value, I chose 25% of the white-color pixel (value of 255) which ended up being 63.75. This was a result of trial and error, 
+      as I started with 50% of 255, which resulted in major portions of the man’s edge being cut off. I then tried 20%, which had a bit too much noise near 
+      the bottom center-right of the image that was not an actual edge of the image. I finally tried 25% and it seemed to work good for the binarized image, 
+      locating most of the cameraman’s edge as well as the camera/tripod, while reducing the noise at the bottom to be marginal.
+    </p>
 
   <!-- Example Section -->
   <div class="section">
