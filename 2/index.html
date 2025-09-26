@@ -215,67 +215,6 @@
         <figcaption>scipy convolution with Dy finite difference operator</figcaption>
       </figure>
     </div>
-
-    <!---
-    <div class="image-grid">
-      <figure>
-        <img src="cathedralB.jpg" alt="Part 2 Image 1">
-        <figcaption>Cathedral; Blue-Green Offsets [5, 2]; Blue-Red Offsets [12, 3]</figcaption>
-      </figure>
-      <figure>
-        <img src="monasteryB.jpg" alt="Part 2 Image 2">
-        <figcaption>Monastery; Blue-Green Offsets [-3, 2]; Blue-Red Offsets [3, 2]</figcaption>
-      </figure>
-      <figure>
-        <img src="tobolskB.jpg" alt="Part 2 Image 3">
-        <figcaption>Tobolsk; Blue-Green Offsets [3, 3]; Blue-Red Offsets [7, 3]</figcaption>
-      </figure>
-      <figure>
-        <img src="church.jpg" alt="Part 2 Image 4">
-        <figcaption>Church; Blue-Green Offsets [25, 4]; Blue-Red Offsets [58, -4]</figcaption>
-      </figure>
-      <figure>
-        <img src="emir.jpg" alt="Part 2 Image 5">
-        <figcaption>Emir; Blue-Green Offsets [48, 24]; Blue-Red Offsets [-214, 4]</figcaption>
-      </figure>
-      <figure>
-        <img src="harvesters.jpg" alt="Part 2 Image 6">
-        <figcaption>Harvesters; Blue-Green Offsets [59, 17]; Blue-Red Offsets [123, 15]</figcaption>
-      </figure>
-      <figure>
-        <img src="icon.jpg" alt="Part 2 Image 7">
-        <figcaption>Icon; Blue-Green Offsets [41, 17]; Blue-Red Offsets [90, 23]</figcaption>
-      </figure>
-      <figure>
-        <img src="italil.jpg" alt="Part 2 Image 8">
-        <figcaption>Italil; Blue-Green Offsets [38, 21]; Blue-Red Offsets [76, 36]</figcaption>
-      </figure>
-      <figure>
-        <img src="lastochikino.jpg" alt="Part 2 Image 9">
-        <figcaption>Lastochikino; Blue-Green Offsets [-3, -2]; Blue-Red Offsets [75, -8]</figcaption>
-      </figure>
-      <figure>
-        <img src="lugano.jpg" alt="Part 2 Image 10">
-        <figcaption>Lugano; Blue-Green Offsets [40, -16]; Blue-Red Offsets [92, -28]</figcaption>
-      </figure>
-      <figure>
-        <img src="melons.jpg" alt="Part 2 Image 11">
-        <figcaption>Melons; Blue-Green Offsets [82, 10]; Blue-Red Offsets [178, 13]</figcaption>
-      </figure>
-      <figure>
-        <img src="self_portrait.jpg" alt="Part 2 Image 12">
-        <figcaption>Self_Portrait; Blue-Green Offsets [78, 29]; Blue-Red Offsets [175, 37]</figcaption>
-      </figure>
-      <figure>
-        <img src="siren.jpg" alt="Part 2 Image 13">
-        <figcaption>Siren; Blue-Green Offsets [49, -5]; Blue-Red Offsets [96, -24]</figcaption>
-      </figure>
-      <figure>
-        <img src="three_generations.jpg" alt="Part 2 Image 14">
-        <figcaption>Three_Generations; Blue-Green Offsets [50, 15]; Blue-Red Offsets [110, 13]</figcaption>
-      </figure>
-    </div>
-    -->
   </div>
 
   <div class="section">
@@ -311,6 +250,52 @@
 
   <div class="section">
     <h2>Part 1.3: DoG Filter</h2>
+    <p>
+      Please find all the relevant images for Gaussian blur and Derivative of Gaussians (DoG) implementations below:
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="cs180_proj2_cameraman_conv_gaussian.jpg" alt="Part 3 Image 1">
+        <figcaption>Gaussian blur applied to cameraman</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_Dx.jpg" alt="Part 3 Image 2">
+        <figcaption>Gaussian blurred cameraman convolved with Dx</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_Dy.jpg" alt="Part 3 Image 3">
+        <figcaption>Gaussian blurred cameraman convolved with Dy</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_grad.jpg" alt="Part 3 Image 3">
+        <figcaption>Gaussian blurred cameraman gradient magnitude image</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_binarize.jpg" alt="Part 3 Image 3">
+        <figcaption>Gaussian blurred cameraman binarized gradient magnitude image</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_dogx.jpg" alt="Part 3 Image 2">
+        <figcaption>Cameraman convolved with DoG x-direction</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_dogy.jpg" alt="Part 3 Image 3">
+        <figcaption>Cameraman convolved with DoG y-direction</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussianXY_grad.jpg" alt="Part 3 Image 3">
+        <figcaption>Cameraman gradient magnitude image for DoG</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_binarize_dog.jpg" alt="Part 3 Image 3">
+        <figcaption>Cameraman binarized gradient magnitude image for DoG</figcaption>
+      </figure>
+    </div>
+    <p>
+      There is significantly less noise for the binarized edge detector image when convolved with a Gaussian whether through Gaussian blur or 
+      derivative of Gaussians (DoG). There are also noticeably more edges of the cameraman and scenery that the binarized gradient magnitude image shows, 
+      indicating better edge detection. 
+    </p>
   </div>
 
   <!-- Example Section -->
