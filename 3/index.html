@@ -123,9 +123,15 @@
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
     }
   </style>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript"
+    src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
 </head>
 <body>
-  <h1>Project 2</h1>
+  <h1>Project 3</h1>
 
   <!-- Overview Section -->
   <div class="section">
@@ -175,33 +181,25 @@
   </div>
 
   <div class="section">
-    <h2>Part 1.2: Finite Difference Operator</h2>
+    <h2>Part A2: Recovering Homographies</h2>
     <p>
-      Please find all the images below:
+      I computed im1_points and im2_points for the homography by using Matplotlib's ginput function and established point correspondences between two images. One 
+      such point correspondence is shown below. While more than 4 point correspondences are recommended to compute a good homography between the two images, I 
+      established only 2 point correspondences for the purpose of this specific exercise in order to make the systems of equations explained soon more visible 
+      given that the number of equations is (2 * # of correspondences).
     </p>
     <div class="image-grid">
         <figure>
-          <img src="cs180_proj2_cameraman_conv_Dx.png" alt="Part 3 Image 1">
-          <figcaption>Cameraman convolved with Dx</figcaption>
+          <img src="sofa_left_correspondences.jpg" alt="Part 3 Image 1">
+          <figcaption>Point correspondences for the left image of sofa set</figcaption>
         </figure>
         <figure>
-          <img src="cs180_proj2_cameraman_conv_Dy.png" alt="Part 3 Image 2">
-          <figcaption>Cameraman convolved with Dy</figcaption>
-        </figure>
-        <figure>
-          <img src="cs180_proj2_cameraman_grad.png" alt="Part 3 Image 3">
-          <figcaption>Cameraman gradient magnitude image</figcaption>
-        </figure>
-        <figure>
-          <img src="cs180_proj2_cameraman_binarize.png" alt="Part 3 Image 3">
-          <figcaption>Binarized gradient magnitude image with 25% threshold</figcaption>
+          <img src="sofa_right_correspondences.jpg" alt="Part 3 Image 1">
+          <figcaption>Point correspondences for the right image of sofa set</figcaption>
         </figure>
       </div>
     <p>
-      For the threshold value, I chose 25% of the white-color pixel (value of 255) which ended up being 63.75. This was a result of trial and error, 
-      as I started with 50% of 255, which resulted in major portions of the man’s edge being cut off. I then tried 20%, which had a bit too much noise near 
-      the bottom center-right of the image that was not an actual edge of the image. I finally tried 25% and it seemed to work good for the binarized image, 
-      locating most of the cameraman’s edge as well as the camera/tripod, while reducing the noise at the bottom to be marginal.
+      I then used these point correspondences to calculate the systems of equations for the homography. For each point correspondence $(x, y)$
     </p>
   </div>
 
