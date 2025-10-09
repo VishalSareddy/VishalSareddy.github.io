@@ -1,1 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project 2</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff; /* light blue background */
+      color: #003366; /* dark blue text */
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #004c99;
+      text-shadow: 1px 1px 2px #cce6ff;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin: 20px 0 15px;
+      color: #004c99;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #003366;
+    }
+
+    .section {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      width: 85%;
+      max-width: 1100px;
+    }
+
+    /* Part 1 image row */
+    .image-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .image-row figure {
+      width: 40%;
+      text-align: center;
+    }
+
+    .image-row img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .image-row figcaption {
+      font-size: 0.95rem;
+      margin-top: 10px;
+      color: #004c99;
+      text-align: center;
+    }
+
+    /* Part 2 image grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 15px;
+    }
+
+    .image-grid figure {
+      text-align: center;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .image-grid figcaption {
+      font-size: 0.9rem;
+      margin-top: 10px;
+      color: #004c99;
+      text-align: center;
+    }
+    
+    a.back-button {
+      text-decoration: none;
+      background-color: #66b2ff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      margin: 20px 0;
+      display: inline-block;
+    }
+
+    a.back-button:hover {
+      background-color: #3399ff;
+      transform: translateY(-2px);
+    }
+
+    pre {
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Project 2</h1>
+
+  <!-- Overview Section -->
+  <div class="section">
+    <h2>Project 3 Overview</h2>
+    <p>
+      <!-- Replace with your paragraph -->
+      This project is intended to implement image warping and mosaicing, finding homographies between two images and using them to rectify images into varying 
+      perspectives, warp images, and stitch together mosaics/panoramas using various images with the same center of projection. Hope you enjoy!
+    </p>
+  </div>
+
+  <!-- Part 2 Section -->
+  <div class="section">
+    <h2>Part A1: Shooting the images</h2>
+    <p>
+      <!-- Replace with your paragraph -->
+      Please find below two sets of images with projective transforms, or images with a fixed center of projection. This was done by keeping the camera eye lens 
+      fixed while rotating to take the various images.
+    </p>
+
+    <div class="image-grid">
+      <figure>
+        <img src="sofa_left.jpg" alt="Part 2 Image 1">
+        <figcaption>Set 1 (Sofa): Left Image</figcaption>
+      </figure>
+      <figure>
+        <img src="sofa_middle.jpg" alt="Part 2 Image 2">
+        <figcaption>Set 1 (Sofa): Middle Image</figcaption>
+      </figure>
+      <figure>
+        <img src="sofa_right.jpg" alt="Part 2 Image 3">
+        <figcaption>Set 1 (Sofa): Right Image</figcaption>
+      </figure>
+      <figure>
+        <img src="room_left.jpg" alt="Part 2 Image 1">
+        <figcaption>Set 2 (Room): Left Image</figcaption>
+      </figure>
+      <figure>
+        <img src="room_middle.jpg" alt="Part 2 Image 2">
+        <figcaption>Set 2 (Room): Middle Image</figcaption>
+      </figure>
+      <figure>
+        <img src="room_right.jpg" alt="Part 2 Image 3">
+        <figcaption>Set 2 (Room): Right Image</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Part 1.2: Finite Difference Operator</h2>
+    <p>
+      Please find all the images below:
+    </p>
+    <div class="image-grid">
+        <figure>
+          <img src="cs180_proj2_cameraman_conv_Dx.png" alt="Part 3 Image 1">
+          <figcaption>Cameraman convolved with Dx</figcaption>
+        </figure>
+        <figure>
+          <img src="cs180_proj2_cameraman_conv_Dy.png" alt="Part 3 Image 2">
+          <figcaption>Cameraman convolved with Dy</figcaption>
+        </figure>
+        <figure>
+          <img src="cs180_proj2_cameraman_grad.png" alt="Part 3 Image 3">
+          <figcaption>Cameraman gradient magnitude image</figcaption>
+        </figure>
+        <figure>
+          <img src="cs180_proj2_cameraman_binarize.png" alt="Part 3 Image 3">
+          <figcaption>Binarized gradient magnitude image with 25% threshold</figcaption>
+        </figure>
+      </div>
+    <p>
+      For the threshold value, I chose 25% of the white-color pixel (value of 255) which ended up being 63.75. This was a result of trial and error, 
+      as I started with 50% of 255, which resulted in major portions of the man’s edge being cut off. I then tried 20%, which had a bit too much noise near 
+      the bottom center-right of the image that was not an actual edge of the image. I finally tried 25% and it seemed to work good for the binarized image, 
+      locating most of the cameraman’s edge as well as the camera/tripod, while reducing the noise at the bottom to be marginal.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Part 1.3: DoG Filter</h2>
+    <p>
+      Please find all the relevant images for Gaussian blur and Derivative of Gaussians (DoG) implementations below:
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="cs180_proj2_cameraman_conv_gaussian.png" alt="Part 3 Image 1">
+        <figcaption>Gaussian blur applied to cameraman</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_Dx.png" alt="Part 3 Image 2">
+        <figcaption>Gaussian blurred cameraman convolved with Dx</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_Dy.png" alt="Part 3 Image 3">
+        <figcaption>Gaussian blurred cameraman convolved with Dy</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_grad.png" alt="Part 3 Image 3">
+        <figcaption>Gaussian blurred cameraman gradient magnitude image</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_binarize.png" alt="Part 3 Image 3">
+        <figcaption>Gaussian blurred cameraman binarized gradient magnitude imagel 25% threshold</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_dogx.png" alt="Part 3 Image 2">
+        <figcaption>Cameraman convolved with DoG x-direction</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_dogy.png" alt="Part 3 Image 3">
+        <figcaption>Cameraman convolved with DoG y-direction</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussianXY_grad.png" alt="Part 3 Image 3">
+        <figcaption>Cameraman gradient magnitude image for DoG</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_cameraman_gaussian_binarize_dog.png" alt="Part 3 Image 3">
+        <figcaption>Cameraman binarized gradient magnitude image for DoG; 25% threshold</figcaption>
+      </figure>
+    </div>
+    <p>
+      There is significantly less noise for the binarized edge detector image with threshold 25% when convolved with a Gaussian whether through Gaussian blur or 
+      derivative of Gaussians (DoG). There are also noticeably more edges of the cameraman and scenery that the binarized gradient magnitude image shows, 
+      indicating better edge detection. 
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Part 2.1: Image Sharpening</h2>
+    <p>
+      The unsharp mask filter essentially adds more of the higher frequencies to the original image to “sharpen” the original image. The process for calculating 
+      these frequencies is done by initially blurring the original image by a Gaussian low-pass filter but consolidates the lower frequencies of the image in 
+      a “blur” effect and then subtracting the original image by the blurred image in order to result only the high-frequency pixels of the image. This 
+      high-frequency image is then multiplied by a hyperparameter ⍺, where bigger values of ⍺ would enable greater “sharpening” of the original image. This 
+      resultant image is then added to the original image in order to create the sharpened image. This whole process can be represented as f + ⍺(f - f * g) 
+      where f is the original image, g is the Gaussian kernel, and * represents convolution. This expression can be changed as f + ⍺(f - f * g) = 
+      (1 + ⍺)f - ⍺(f * g) = f * ((1 + ⍺)e - ⍺g). The last expression represents convolving the original image by the unsharp mask filter or (1 + ⍺)e - ⍺g, where 
+      e is the unit impulse. This convolution allows our images to be sharpened as seen below.
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="taj.jpg" alt="Part 2 Image 1">
+        <figcaption>Blurred Taj Mahal</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_sharp_taj.jpg" alt="Part 2 Image 2">
+        <figcaption>Sharpened Taj Mahal</figcaption>
+      </figure>
+      <figure>
+        <img src="original_cat.jpeg" alt="Part 2 Image 3">
+        <figcaption>Original Cat</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_blur_cat.jpeg" alt="Part 2 Image 4">
+        <figcaption>Blurred Cat</figcaption>
+      </figure>
+      <figure>
+        <img src="cs180_proj2_sharp_cat.jpeg" alt="Part 2 Image 5">
+        <figcaption>Re-Sharpened Cat</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Part 2.2: Hybrid Images</h2>
+    <p>
+      Please find the images in the hybrid creation process for Derek and Nutmeg below, from alignment, filtered images, and hybrid. We chose cutoff frequencies
+      of 7 for the low-pass image and 4 for the high-pass image. These were determined through trial and error, though I knew that the high-pass frequency should
+      be lower than the low-pass frequency to ensure proper hybrid image creation because it allows blending of the higher frequencies in the low-pass image with
+      the lower frequencies of the high-pass image.
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="DerekPicture.jpg" alt="Part 2 Image 1">
+        <figcaption>Original Derek</figcaption>
+      </figure>
+      <figure>
+        <img src="nutmeg.jpg" alt="Part 2 Image 2">
+        <figcaption>Original Nutmeg</figcaption>
+      </figure>
+      <figure>
+        <img src="highpass_sample.jpg" alt="Part 2 Image 3">
+        <figcaption>Aligned and High-Pass Filtered Derek</figcaption>
+      </figure>
+      <figure>
+        <img src="lowpass_sample.jpg" alt="Part 2 Image 4">
+        <figcaption>Aligned and Low-Pass Filtered Nutmeg</figcaption>
+      </figure>
+      <figure>
+        <img src="hybrid_sample.jpg" alt="Part 2 Image 5">
+        <figcaption>Hybrid Derek and Nutmeg</figcaption>
+      </figure>
+    </div>
+    <p>
+    Also, find the log magnitude of the Fourier transforms for the original, filtered, and hybrid Derek and Nutmeg below, providing a thorough frequency analysis
+    verifying the result.
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="fft_original_derek.jpg" alt="Part 2 Image 1">
+        <figcaption>Original Derek Fourier Transform</figcaption>
+      </figure>
+      <figure>
+        <img src="fft_original_nutmeg.jpg" alt="Part 2 Image 2">
+        <figcaption>Original Nutmeg Fourier Transform</figcaption>
+      </figure>
+      <figure>
+        <img src="fft_high_pass_derek.jpg" alt="Part 2 Image 3">
+        <figcaption>Aligned and High-Pass Filtered Derek Fourier Transform</figcaption>
+      </figure>
+      <figure>
+        <img src="fft_low_pass_nutmeg.jpg" alt="Part 2 Image 4">
+        <figcaption>Aligned and Low-Pass Filtered Nutmeg Fourier Transform</figcaption>
+      </figure>
+      <figure>
+        <img src="fft_hybrid_derek_nutmeg.jpg" alt="Part 2 Image 5">
+        <figcaption>Hybrid Derek and Nutmeg Fourier Transform</figcaption>
+      </figure>
+    </div>
+    <p>
+      Finally, please find the original and hybrid images for two of my choice:
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="fish.jpg" alt="Part 2 Image 1">
+        <figcaption>Fish Image</figcaption>
+      </figure>
+      <figure>
+        <img src="submarine.jpg" alt="Part 2 Image 2">
+        <figcaption>Submarine Image</figcaption>
+      </figure>
+      <figure>
+        <img src="hybrid_ocean.jpg" alt="Part 2 Image 3">
+        <figcaption>Fish and Submarine Hybrid</figcaption>
+      </figure>
+      <figure>
+        <img src="happy_face.jpg" alt="Part 2 Image 4">
+        <figcaption>Happy Face Image</figcaption>
+      </figure>
+      <figure>
+        <img src="sad_face.jpg" alt="Part 2 Image 5">
+        <figcaption>Sad Face Image</figcaption>
+      </figure>
+      <figure>
+        <img src="hybrid_faces.jpg" alt="Part 2 Image 5">
+        <figcaption>Happy and Sad Face Hybrid</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Part 2.3: Gaussian and Laplacian Stacks</h2>
+    <p>Please find the images of the Laplacian stack and originals in line with the Figure 3.42 of the Szelski paper below. The rows are Laplacian depth 0, 
+    Laplacian depth 2, Laplacian depth 4 (essentially the Gaussian blur from Gaussian stack since depth of the stack is 5), and the originals respectively. The 
+    columns are apple, orange, and hybrid oraple respectively.
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="figureA.jpg" alt="Part 3 Image 1">
+        <figcaption>(a)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureB.jpg" alt="Part 3 Image 1">
+        <figcaption>(b)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureC.jpg" alt="Part 3 Image 1">
+        <figcaption>(c)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureD.jpg" alt="Part 3 Image 1">
+        <figcaption>(d)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureE.jpg" alt="Part 3 Image 1">
+        <figcaption>(e)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureF.jpg" alt="Part 3 Image 1">
+        <figcaption>(f)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureG.jpg" alt="Part 3 Image 1">
+        <figcaption>(g)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureH.jpg" alt="Part 3 Image 1">
+        <figcaption>(h)</figcaption>
+      </figure>
+      <figure>
+        <img src="figureI.jpg" alt="Part 3 Image 1">
+        <figcaption>(i)</figcaption>
+      </figure>
+      <figure>
+        <img src="apple.jpeg" alt="Part 3 Image 1">
+        <figcaption>(j)</figcaption>
+      </figure>
+      <figure>
+        <img src="orange.jpeg" alt="Part 3 Image 1">
+        <figcaption>(k)</figcaption>
+      </figure>
+      <figure>
+        <img src="oraple.jpeg" alt="Part 3 Image 1">
+        <figcaption>(l)</figcaption>
+      </figure>
+    </div>
+    <p>
+      In order to blend the images, I used a left-right linear mask represented as a Gaussian stack. The mask blended together the images at the seam in the center
+      using np.linspace() which enabled a smooth transition for blending rather than a visible seam.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Part 2.4: Multi-Resolution Blending</h2>
+    <p>
+      Please find below a clearer oraple for this part specifically with a lower depth Laplacian stack (depth=3). The oraple at depth=5 is a bit blurry due to
+      the compounding value of sigma heightening Gaussian blur.
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="apple.jpeg" alt="Part 3 Image 1">
+        <figcaption>Original Apple</figcaption>
+      </figure>
+      <figure>
+        <img src="orange.jpeg" alt="Part 3 Image 1">
+        <figcaption>Original Orange</figcaption>
+      </figure>
+      <figure>
+        <img src="oraple_clear.jpeg" alt="Part 3 Image 1">
+        <figcaption>Oraple</figcaption>
+      </figure>
+    </div>
+    <p>
+      Finally, please find below the two blended images I created. For the eye-sand blend, I utilized a circular mask, functionally similar to the linear
+      mask but instead having the seam be a circle with a pre-determined radius hyperparameter.
+    </p>
+    <div class="image-grid">
+      <figure>
+        <img src="alex.jpg" alt="Part 3 Image 1">
+        <figcaption>Original Alex</figcaption>
+      </figure>
+      <figure>
+        <img src="amy.jpg" alt="Part 3 Image 1">
+        <figcaption>Original Amy</figcaption>
+      </figure>
+      <figure>
+        <img src="alex_amy.jpg" alt="Part 3 Image 1">
+        <figcaption>Alex Amy Blend</figcaption>
+      </figure>
+      <figure>
+        <img src="eye.jpg" alt="Part 3 Image 1">
+        <figcaption>Original Eye</figcaption>
+      </figure>
+      <figure>
+        <img src="sand.jpg" alt="Part 3 Image 1">
+        <figcaption>Original Sand</figcaption>
+      </figure>
+      <figure>
+        <img src="eye_sand.jpg" alt="Part 3 Image 1">
+        <figcaption>Eye in the Sand</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <a href="../index.html" class="back-button">Back to Home</a>
+</body>
+</html>
