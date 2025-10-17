@@ -341,7 +341,7 @@
     <h2>Part B1: Harris Corner Detection</h2>
     <p>
       <!-- Replace with your paragraph -->
-      Please find below the two images. The first contains the Harris corners of my chosen zebra image with min distance parameter of 50. The second image 
+      Please find below the two images. The first contains the Harris corners of my chosen zebra image with min distance parameter of 30. The second image 
       implements ANMS with 200 corners.
     </p>
 
@@ -376,14 +376,58 @@
     <h2>Part B3: Feature Matching</h2>
     <p>
       <!-- Replace with your paragraph -->
-      Please find below the pairs of features matched between the left and middle images for the shoe rack set. I used the threshold for Lowe's test as 0.7 
-      (specified in Brown et. al.) and came forward with the following 4 feature matches.
+      Please find below the pairs of features matched between the left and middle images for the shoe rack set. I used the threshold for Lowe's test (ratio of 
+      distance to NN over second NN) as 0.7 and came forward with the following feature matches.
     </p>
 
     <div class="image-row">
       <figure>
         <img src="rack_feature_matches.jpg" alt="Part 2 Image 1">
         <figcaption>Shoe Rack Feature Matches</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Part B4: RANSAC For Robust Homography</h2>
+    <p>
+      <!-- Replace with your paragraph -->
+      I implemented 4-point RANSAC to find the robust homographies and utilized similar code logic to Part A4 as well as the new homographies to build new 
+      "automatic" image mosaics (compared to the "manual" point correspondences from Part A4). Please find below the comparisons between automatic and manual 
+      image mosaics for the rack and sofa set of images. For the room set, I was not able to construct a proper automatic image mosaic due to a lack of complex 
+      patterns between the middle and right images, making accurate feature detection and matching much more difficult. For this reason, I used a new "store" 
+      (Student Store) set of images for my third mosaic. Please find all of these images below: the manual image mosaics are copied from Part A4 for easier 
+      comparison.
+    </p>
+
+    <div class="image-row">
+      <figure>
+        <img src="sofa_full_ransac.jpg" alt="Part 2 Image 3">
+        <figcaption>Set 1 (Sofa): Automatic Full Mosaic</figcaption>
+      </figure>
+    </div>
+    <div class="image-row">
+      <figure>
+        <img src="sofa_full.jpg" alt="Part 2 Image 3">
+        <figcaption>Set 1 (Sofa): Manual Full Mosaic</figcaption>
+      </figure>
+    </div>
+    <div class="image-row">
+      <figure>
+        <img src="rack_full_ransac.jpg" alt="Part 2 Image 3">
+        <figcaption>Set 2 (Rack): Automatic Full Mosaic</figcaption>
+      </figure>
+    </div>
+    <div class="image-row">
+      <figure>
+        <img src="rack_full.jpg" alt="Part 2 Image 3">
+        <figcaption>Set 2 (Rack): Manual Full Mosaic</figcaption>
+      </figure>
+    </div>
+    <div class="image-row">
+      <figure>
+        <img src="store_full_ransac.jpg" alt="Part 2 Image 3">
+        <figcaption>Set 4 (Store): Automatic Full Mosaic</figcaption>
       </figure>
     </div>
   </div>
